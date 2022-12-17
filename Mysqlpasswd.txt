@@ -1,0 +1,68 @@
+tep 2:- Make Mysql service directory.
+sudo mkdir /var/run/mysqld
+
+Step3:- Give Mysql user permission to write to the service directory.
+sudo chown mysql: /var/run/mysqld
+
+Step 4:- Start Mysql manually, without permission checks or networking.
+sudo mysqld_safe --skip-grant-tables --skip-networking &
+
+Step 5:- Log in without a password.
+mysql -uroot mysql
+
+Step 6:- For change password                               $#passwd%@
+UPDATE mysql.user SET authentication_string = PASSWORD('newreset_password') WHERE User = 'root' AND Host = 'localhost';
+
+Step 7:- flush privileges;
+
+Step 8:- start the MySQL service normally.
+sudo systemctl strat mysqld
+
+Step 9:- mysql -u root -pnewreset_password 
+ 
+
+OR
+===
+
+Step 1: Stop Mysql
+systemctl stop mysqld
+
+Step 2: set mysql env options
+systemctl set-environment MYSQLD_OPTS=--skip-grant-tables
+
+Step 3: Start Mysql
+systemctl start mysqld
+
+Step 4: Update Password using query
+mysql> UPDATE mysql.user SET authentication_string = PASSWORD ('ENTER_NEW_PASSWORD') WHERE User = 'root' AND Host = 'localhost'; mysql> FLUSH PRIVILEGES; mysql> quit
+
+Step 5: Stop Mysql
+systemctl stop mysqld
+
+Step 6: Unset enviroment
+systemctl unset-environment MYSQLD_OPTS
+
+Step 7: Star mysql normal
+systemctl start mysqld
+
+===============
+
+shown databases; (to see the databases in the system)
+\q to quit
+
+
+Anjolaoluwa79@
+
+Git or github
+==============
+
+/root/.ssh/id_rsa.pub
+
+
+echo "# gittest" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:Reach4law/gittest.git
+git push -u origin main
