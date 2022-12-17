@@ -1,0 +1,80 @@
+Nagios installation steps
+==============================
+Before you start disble SELinux
+================================
+Check the SELinux Status #
+- sestatus
+Disable SELinux #
+* You can temporarily change the SELinux mode from targeted to permissive with the following command:
+- sudo setenforce 0
+* However, this change is valid for the current runtime session only.
+To permanently disable SELinux on your CentOS 7 system, follow the steps below:
+
+vi /etc/selinux/config ( out put )
+ 
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#       enforcing - SELinux security policy is enforced.
+#       permissive - SELinux prints warnings instead of enforcing.
+#       disabled - No SELinux policy is loaded.
+SELINUX=disabled
+# SELINUXTYPE= can take one of these two values:
+#       targeted - Targeted processes are protected,
+#       mls - Multi Level Security protection.
+SELINUXTYPE=targeted
+Save the file and reboot your CentOS system with:
+-sudo shutdown -r now
+Once the system boots up, verify the change with the sestatus command:
+sestatus
+The output should look like this:
+
+SELinux status:                 disabled
+
+after all the above begin Nagios installation
+-sudo yum update
+-sudo yum install httpd php php-cli gcc glibc glibc-common gd gd-devel net-snmp openssl-devel wget
+-sudo yum install make gettext autoconf net-snmp-utils epel-release perl-Net-SNMP postfix unzip automake
+-cd /usr/src/
+-wget https://github.com/NagiosEnterprises/nagioscore/archive/nagios-4.4.2.tar.gz
+-tar zxf nagios-*.tar.gz
+-cd nagioscore-nagios-*/
+-cd nagioscore-nagios-*/
+-./configure
+======
+Out
+======
+*** Configuration summary for nagios 4.4.2 2018-08-16 ***:
+
+ General Options:
+ -------------------------
+        Nagios executable:  nagios
+        Nagios user/group:  nagios,nagios
+       Command user/group:  nagios,nagios
+             Event Broker:  yes
+        Install ${prefix}:  /usr/local/nagios
+    Install ${includedir}:  /usr/local/nagios/include/nagios
+                Lock file:  /run/nagios.lock
+   Check result directory:  /usr/local/nagios/var/spool/checkresults
+           Init directory:  /lib/systemd/system
+  Apache conf.d directory:  /etc/httpd/conf.d
+             Mail program:  /sbin/sendmail
+                  Host OS:  linux-gnu
+          IOBroker Method:  epoll
+
+ Web Interface Options:
+ ------------------------
+                 HTML URL:  http://localhost/nagios/
+                  CGI URL:  http://localhost/nagios/cgi-bin/
+ Traceroute (used by WAP):  /bin/traceroute
+
+
+Review the options above for accuracy.  If they look okay,
+type 'make all' to compile the main program and CGIs.
+
+continue with the below urL
+https://linuxize.com/post/how-to-install-and-configure-nagios-on-centos-7/
+
+
+NRPE ===="wget http://assets.nagios.com/downloads/nagiosxi/agents/linux-nrpe-agent.tar.gz"
+(Resources) https://github.com/techarkit/nagios/blob/master/Linux_NRPE_Installation.md
+
