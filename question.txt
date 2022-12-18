@@ -1,0 +1,67 @@
+Terraform state file?
+=====================
+Terraform stores information about infrastructure in a state file. 
+This state file keeps track of resources created by configuration 
+and maps them to real-world resources.
+
+What is terraform lifecycle?
+=============================
+lifecycle is a nested block that can appear within a resource block. 
+The lifecycle block and its contents are meta-arguments, 
+available for all resource blocks regardless of type.
+
+What is LDAP and how does is work?
+==================================
+An LDAP server, also called a Directory System Agent (DSA), runs 
+on Windows OS and Unix/Linux. It stores usernames, passwords, and 
+other core user identities. It uses this data to authenticate users 
+when it receives requests or queries and shares the requests with 
+other DSAs. Several applications and services can connect to a server 
+at once to validate users.
+
+what is Storage Virtualization   and how does it work?
+========================================================
+In storage virtualization, multiple physical disks are combined into a 
+group and from that group of physical disks, virtual storage or logical 
+storage blocks are assigned to a server for use. The simplest examples 
+of storage virtualization object are LUN's (Logical unit number), 
+Logical volume (LV), RAID groups, etc.
+
+What is version control?
+==========================
+The purpose of version control is to allow software teams track 
+changes to the code, while enhancing communication and collaboration 
+between team members. Version control facilitates a continuous, simple 
+way to develop software.
+
+
+How to reduce LVM partition size in RHEL and CentOS
+=========================================================
+Step:1 Umount the file system
+Step:2 check the file system for Errors using e2fsck command
+Step:3 Reduce or Shrink the size of /home to desire size
+Step:4 Reduce the size using lvreduce command
+
+Describe how you would increase the size of an LVM partition
+================================================================
+Step:1 Type ' df -h' command to list the file system.
+Step:2 Now check whether free space is available space in the volume group.
+Step:3 Use lvextend command to increase the size.
+Step:3 Run the resize2fs command.
+Step:4 Use df command and verify /home size
+
+How to Shrink an LVM Volume Safely on Linux
+====================================================
+Step 1: First take  a  full backup  of  your filesystem
+Step 2:Start and  force  a filesystem check
+Step 3:Resize  your  filesystem before resize your Logical  Volume
+Step 4: Reduce  LVM size
+Step 5: Re-run resize2fs 
+
+Ansible for deployment 
+========================
+Ansible is the simplest way to deploy your applications. It gives 
+you the power to deploy multi-tier applications reliably and 
+consistently, all from one common framework. 
+You can configure needed services as well as push application 
+artifacts from one common system.
