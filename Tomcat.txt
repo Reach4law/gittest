@@ -1,0 +1,107 @@
+Cheat sheet
+============
+https://www.youtube.com/watch?v=rG4WhEZ6I8Y (Help from youtube)
+
+Apache Tomcat Installation 
+===========================
+
+Step1: Installation
+# Set Java Enironment
+JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.201.b09-2.e17_6.x86_64
+export JAVA_HOME
+
+export PATH=$PATH:$JAVA_HOME/bin
+export PATH
+
+to startup tomcat
+- sh startup.sh     sh shutdown.sh
+or
+ln -s /opt/tomcat/apache-tomcat-8.5.82/bin/startup.sh /usr/bin/tomcatup
+ln -s /opt/tomcat/apache-tomcat-8.5.82/bin/shutdown.sh /usr/bin/tomcatdown
+
+Check to see if tomcat is running 
+ps fax | grep tomc
+netstat -tunlp
+
+steps in installing tomcat
+- create user to use
+- useradd -m -d /opt/tomcat/ -U -s /bin/false tomcat
+-id tomcat
+- wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.65/bin/apache-tomcat-9.0.65.tar.gz
+- tar -xvzf apache file
+- mv apache file/* /opt/tomcat/
+configure this files
+vi /opt/tomcat/webapps/manager//META-INF/context.xml
+vi /opt/tomcat/webapps/host-manager//META-INF/context.xml
+vi /opt/tomcat/conf/tomcat-users.xml
+create a file for startup 
+-cd /etc/systemd/system/
+===========
+Inside System file
+=============
+Envirnment="JAVA_HOME=/usr/lib/jvm/jre"
+Envirnment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom"
+Envirnment="CATALINA_BASE=/opt/tomcat"
+Envirnment="CATALINA_HOME=/opt/tomcat"
+Envirnment="CATALINA_PID=/opt/tomcat/temp/tomcat.pid"
+Envirnment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
+
+ExecStart=/opt/tomcat/bin/startup.sh
+ExecStop=/opt/tomcat/bin/shutdown.sh
+
+save file 
+
+systemctl daemon-reload
+
+[Install]
+WantedBy=multi-user.target
+
+admin user = admin-reachtom
+
+
+
+ANSIBLE Cheat sheet
+=====================
+-cd /etc/ansible
+edit ansible.cfg file
+-host_key-checking = false
+-ansible linux -a "cat /etc/os-release"
+ansible linux -a "reboot"
+Playbook in ansible >>> is a yml file
+checking systax
+ansible-playbook ilovnano.yml --syntax-check
+-vi ilovnano.yml (my sample and my playbook)
+- ansible-playbook ilovnano.yml ( to run playbook)
+This commonds are used to searh in the inventory (Host Patther)
+-ansible all --list-host
+-ansible 'new*' --list-host
+-ansible '*.com*' --list-host
+-ansible 'web*' --list-hostexit
+-ansible linux -m shell -a 'uptime'
+-ansible --help|grep [more info]
+Authoticate the passwd
+-sudo vi /etc/ssh/sshd_config
+change the authotication to yes
+create a file 
+sudo vi /etc/sudoers.d/(reach9)give any name then 
+reach9 ALL=(ALL) NOPASSWD: ALL
+
+Execute Ansible Ad-hoc commands
+ansible linux -i hosts -m yum -a "name=httpd state=present"
+ansible linux -i hosts -m yum -a "name=httpd state=absent"
+
+When looking for doc
+-ansible-doc -l
+
+What is a Playbook?
+A collection of tasks (or plays) written in a file
+YAML format
+Standard YAML syntax
+Multiple Plays can be included
+Task -> Plays -> Playbook 
+
+Always add your nodes ip to vi /etc/hosts
+
+Add to resume
+• Deployments using Ansible
+• Developing Ansible Playbooks for installation and configuration
