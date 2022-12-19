@@ -1,0 +1,10 @@
+df -h -t ext4 --output=source,size,pcent
+
+Finding a directory with files command below
+=============================================
+find / -xdev -printf '%h\n' | sort | uniq -c | sort -k 1 -n
+
+How to clean up a directory
+=================================
+Go to the desired directory via the command cd
+ls -f . | perl -pe 'select(undef,undef,undef,0,01)' | xargs -t -n 50 rm
