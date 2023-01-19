@@ -1,0 +1,127 @@
+jobs appllied
+====================
+1. Information International Associates, Inc. 12/21/2022
+(865) 481-0388
+104 Union Valley Rd, Oak Ridge, TN 37830
+
+2. Insight Global12/21/2022 (2)
+855-486-4057
+
+12/29/2022
+Delta
+Associate Software Development Engineer
+
+Delta Flight Products DevOps Engineer
+
+
+Raytheon Technologies
+Linux/Unix Systems Administrator (Remote)
+
+ManTech
+System Administrator - Linux​/Remote
+
+Research Innovations
+Linux Systems Administrator
+
+The Judge Group
+Linux Administrator
+
+Linux Administrator
+Job ID: 929962
+
+UNIX/LINUX Systems Administrator
+Job ID: 936450
+
+Dice  Nashville, TN
+Linux System Admin
+
+Linux Administrator - REMOTE
+Two95 International Inc
+
+Unisys Corporation
+Linux System Administrator
+Linux System Administrator -- REMOTE
+
+=================
+02/01/2023
+===============
+​Lenmar consulting 
+UNIX/LINUX Systems Administration - Remote Opportunity!!
+22-02945
+
+CACI
+Linux Administrator (Cloud)
+
+CGI
+Linux System Administrator
+J1222-0595
+
+ERT exceed Expectation
+Linux System Administrator -- REMOTE
+
+========================
+01/03/2023
+========================
+Kepro
+Application Support Analyst (Remote)
+
+
+MATRIX Resources
+Application Support Analyst- REMOTE
+
+ThoroughCare
+Application Support Analyst
+
+OpenArc
+Application Support Analyst
+
+Tradeweb Markets LLC
+Application Support Specialist
+
+
+01/06/2023
+Systems Administrator
+Melissa ISD
+
+
+01/12/2023
+SAIC
+Linux System Administrator
+
+Madis
+Linux System Administrator
+
+01/17/2023
+citi
+
+01/18/2023
+Ameriinfo Vets
+Linux System Administrator
+
+Linux System Administrator (SUSE)
+
+
+DSB OBT engineer who will be supporting applications like 
+MRMS and MADIS in OBT and will need an email address to 
+perform this support and submit his application for a CAC card
+
+To find old file
+==================
+find /root/scripts/realtime-scripts/ -mtime +90 -execl ls -l {} \;
+     ===============================
+      That is where the files are!
+ind /root/scripts/realtime-scripts/ -mtime +90 -execl mv {} {}.old \;
+
+tar -cvf /tmp/backup.tar /etc/ /var
+gzip /tmp/backup.tar
+find /tmp/backup.tar.gz mtime -1 -type f -print &> /dev/null
+if [ $? -eq 0 ]
+then
+echo "backup was created"
+echo
+echo "archieving backup"
+scp /tmp/backup.tar.gz root@:ip:/path
+else
+echo"Backup Failed"
+fi
+
